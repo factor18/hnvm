@@ -7,10 +7,12 @@ module HNVM
     def install
       check_os
       $log.info "#{$assistant}: Installing HNVM"
-      system("rm -Rf #{$hnvm_path}")
-      print "."
-      system("cp -R #{CURRENT_PATH} #{$hnvm_path}") if CURRENT_PATH != $hnvm_path
-      print "."
+      if CURRENT_PATH != $hnvm_path
+        system("rm -Rf #{$hnvm_path}")
+        print "."
+        system("cp -R #{CURRENT_PATH} #{$hnvm_path}")
+        print "."
+      end
       system("sed -i '' \"/hnvm/d\" ~/.profile ~/.zshrc ~/.bashrc")
       print "."
       system("echo 'export PATH=\"#{$hnvm_path}/bin:$PATH\"' | tee -a ~/.profile ~/.zshrc ~/.bashrc >> /dev/null")
@@ -20,10 +22,11 @@ module HNVM
 
     def uninstall
       $log.info "#{$assistant}: Uninstalling HNVM"
-      system("rm -Rf #{$hnvm_path}")
-      print "."
       system("sed -i '' \"/hnvm/d\" ~/.profile ~/.zshrc ~/.bashrc")
       puts "."
+      system("rm -Rf #{$hnvm_path}")
+      print "."
+      exec("cd ~/")
       $log.info "#{$assistant}: Uninstalled HNVM"
     end
 
