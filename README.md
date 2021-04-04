@@ -18,9 +18,9 @@ And their versions will be selected in runtime based on the configuration.
 ### Configuration
 HNVM reads its configuration from one of the following places, in order from highest to lowest priority:
 
-`.hnvmrc` file in the 
-`.hnvmrc` file at the root of git repo (if running in a git repo)
-`.hnvmrc` file in your home directory (~/.hnvmrc)
+- `.hnvmrc` file in the 
+- `.hnvmrc` file at the root of git repo, if running in a git repo
+- `.hnvmrc` file in your home directory `~/.hnvmrc`
 
 The `.hnvmrc` files are key value pairs:
 ```
