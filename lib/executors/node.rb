@@ -6,10 +6,14 @@ module HNVM
       def execute(args)
         node = HNVM::Node.new
         node.download unless node.exists?
-        exec("#{node.path}/bin/node #{args}")
+        if args.empty?
+          exec("#{node.path}/bin/node")
+        else
+          exec("#{node.path}/bin/node #{args.map {|a| a.dump}.join(' ')}")
+        end
       end
     end
   end
 end
 
-HNVM::Executors::Node.new.execute(ARGV.join(" "))
+HNVM::Executors::Node.new.execute(ARGV)
