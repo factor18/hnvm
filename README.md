@@ -7,6 +7,8 @@ Hermetically sealed `node`, `npm`, `npx`
 - Upgrades required by one package don't affect another
 - Each app or package can run the node version simultaneously
 
+Inspired by https://github.com/Urbancompass/hnvm
+
 ### Installation
 ```
 $ bundle install
